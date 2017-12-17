@@ -49,6 +49,8 @@ end
 temp1 = sum(var(mean_vect));
 
 fprintf('Uniformity Result = %f\n\n', temp1);
-
-
+fprintf('Modularity ');
 toc
+
+%% -------------------------------Uniform Kmeans--------------------------------------------
+

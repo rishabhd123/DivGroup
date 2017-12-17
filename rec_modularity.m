@@ -32,4 +32,5 @@ function temp = rec_modularity(flag, data_index, data_len)
     rec_modularity(flag, grp_1, length(grp_1));
     rec_modularity(flag, grp_2, length(grp_2));
     
+    
 end
