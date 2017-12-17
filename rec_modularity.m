@@ -1,3 +1,4 @@
+
 function temp = rec_modularity(flag, data_index, data_len)
     
     global distanceMat lambda globalDegreeVect;
@@ -9,6 +10,7 @@ function temp = rec_modularity(flag, data_index, data_len)
         grp_cell{index}=data_index;
         index = index + 1;
 %         data_index
+        
         return;
     end
 

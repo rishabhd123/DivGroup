@@ -1,10 +1,10 @@
-
+fprintf('Modularity\n\n');
 N=1000;
 d=5;
 grps = 4;
 tic
 
-global A;
+
 global lambda;
 global  grp_cell;
 global index;
@@ -53,4 +53,49 @@ fprintf('Modularity ');
 toc
 
 %% -------------------------------Uniform Kmeans--------------------------------------------
+tic
+fprintf('\n\n Uniform Kmeans\n\n');
+K = N/grps;
+% U_grp_cell = cell(grps, 1);
+[U_grp_cell, U_grp_size] = uniform_kmeans(A, K, grps);
+
+
+fprintf('Variance = %f\n\n', var(U_grp_size));
+
+fprintf('Diversity\n');
+
+temp1 = 0;
+for i=1:grps
+    temp2 = A(U_grp_cell{i}, :);
+    temp1 = temp1 + sum(var(temp2));    
+end
+
+fprintf('Diversity Result(Cummulative Variance) = %f\n\n', temp1);
+
+fprintf('Uniformity\n');
+
+mean_vect = zeros(grps, d);
+for i=1:grps
+    temp2 = A(U_grp_cell{i}, :);
+    mean_vect(i, :) = mean(temp2);
+end
+
+temp1 = sum(var(mean_vect));
+
+fprintf('Uniformity Result = %f\n\n', temp1);
+fprintf('Uniform Kmeans ');
+toc
+
+
+
+
+
+
+
+
+
+
+
+
+
 
