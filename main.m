@@ -9,15 +9,14 @@ global lambda;
 global  grp_cell;
 global index;
 global distanceMat;
-global globalDegreeVect;
+
 index=1;
 
 A = randn(N, d);
 A(A<0) = -A(A<0);
 grp_cell = cell(4,1);
-lambda = 10;
+lambda = 0.001;
 distanceMat = squareform(pdist(A));
-globalDegreeVect = sum(distanceMat, 2);
 rec_modularity(grps, 1:N, N);
 
 fprintf('1st Metric: Students Distribution\n');

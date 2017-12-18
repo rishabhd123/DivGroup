@@ -12,6 +12,7 @@ function [U_grp_cell, grp_size] = uniform_kmeans(A, K, grps)
         clus = find(IDX==c);
         cl_sz = length(clus);
         grp = randi(grps);
+        
         while(cl_sz>0)
             
             if grp_size(grp)<K
