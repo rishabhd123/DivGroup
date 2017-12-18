@@ -15,7 +15,7 @@ index=1;
 A = randn(N, d);
 A(A<0) = -A(A<0);
 grp_cell = cell(4,1);
-lambda = 0.001;
+lambda = 10;
 distanceMat = squareform(pdist(A));
 rec_modularity(grps, 1:N, N);
 
@@ -84,17 +84,4 @@ temp1 = sum(var(mean_vect));
 fprintf('Uniformity Result = %f\n\n', temp1);
 fprintf('Uniform Kmeans ');
 toc
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -20,11 +20,13 @@ function temp = rec_modularity(flag, data_index, data_len)
 
     Mat = D - degree_mat/(2*m) - lambda*ones(data_len);
     [Evec, Evl] = eig(Mat);
-    
+%     data_len
     a = diag(Evl);
     a(data_len)
+    a(1)
     
-    eig_vec = Evec(:,data_len);
+    eig_vec = Evec(:, data_len);
+%     sum(eig_vec>=0)
     grp_1 = data_index(find(eig_vec>=0));
     grp_2 = data_index(find(eig_vec< 0));
     
