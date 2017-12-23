@@ -17,16 +17,20 @@ function temp = rec_modularity(flag, data_index, data_len)
     degree_vect = sum(D,2);
     degree_mat = degree_vect * degree_vect';
     m = sum(sum(D))/2;
-
+    lambda
     Mat = D - degree_mat/(2*m) - lambda*ones(data_len);
     [Evec, Evl] = eig(Mat);
-%     data_len
+    eig_vec = Evec(:, data_len);    
+    
+    if(sum(eig_vec>=0) == 0 || sum(eig_vec<0) == 0)
+        display('Inside')
+        data_len = data_len-1;
+        eig_vec = Evec(:, data_len);
+    end
+    
     a = diag(Evl);
     a(data_len)
-    a(1)
     
-    eig_vec = Evec(:, data_len);
-%     sum(eig_vec>=0)
     grp_1 = data_index(find(eig_vec>=0));
     grp_2 = data_index(find(eig_vec< 0));
     
@@ -35,6 +39,5 @@ function temp = rec_modularity(flag, data_index, data_len)
     
     rec_modularity(flag, grp_1, length(grp_1));
     rec_modularity(flag, grp_2, length(grp_2));
-    
     
 end
