@@ -1,26 +1,27 @@
-function [U_grp_cell, grp_size] = uniform_kmeans(A, K, grps)
+function [U_grp_cell, U_grp_size] = uniform_kmeans(A, Kmns, K)
     
-    U_grp_cell = cell(grps, 1);
+    U_grp_cell = cell(K, 1);
     
-    for i=1:grps
-        U_grp_cell{i} = zeros(K,1);
+    for i=1:K
+        U_grp_cell{i} = zeros(Kmns,1);
     end
     
-    IDX = kmeans(A, K);
-    grp_size = zeros(grps, 1);
-    for c = 1:K
+    IDX = kmeans(A, Kmns);
+    U_grp_size = zeros(K, 1);
+    for c = 1:Kmns
+%         c
         clus = find(IDX==c);
         cl_sz = length(clus);
-        grp = randi(grps);
+        grp = randi(K);
         
         while(cl_sz>0)
-            
-            if grp_size(grp)<K
-                grp_size(grp) = grp_size(grp) + 1;
-                U_grp_cell{grp}(grp_size(grp)) = clus(cl_sz);
+%             cl_sz
+            if U_grp_size(grp)<Kmns
+                U_grp_size(grp) = U_grp_size(grp) + 1;
+                U_grp_cell{grp}(U_grp_size(grp)) = clus(cl_sz);
                 cl_sz = cl_sz - 1;
             end
-            grp = mod(grp, grps) + 1;
+            grp = mod(grp, K) + 1;
             
         end
         
