@@ -3,10 +3,10 @@
 % K = 2^8; %Number of groups
 % conc_crcl = 64;
 N = 2^13;
-d = 5;
-K = 2^8; %Number of groups
-n = N/K; % size of each group
-conc_crcl = 64;
+d = 2;
+K = 2^9; %Number of groups
+% n = N/K; % size of each group
+conc_crcl = 2^5;
 mn = 500;
 mu = ones([1 ,d])*mn;
 R = cell(conc_crcl, 1);
@@ -14,8 +14,8 @@ temp=0;
 
 for i = 1:conc_crcl
     R{i} = zeros(2,1);
-    R{i}(1) = temp + randi([20,30]);
-    R{i}(2) = R{i}(1) + randi([4,8]);
+    R{i}(1) = temp + randi([8,12]);
+    R{i}(2) = R{i}(1) + randi([1,2]);
     temp = R{i}(2);
 end
 
@@ -41,7 +41,8 @@ input.data = data;
 input.N = N;
 input.d = d;
 
-plot(data(:,1), data(:,2), '.r')
+plot(data(:,1), data(:,2), '.r');
+
 
 
 

@@ -8,6 +8,7 @@ function [U_grp_cell, U_grp_size] = uniform_kmeans(A, Kmns, K)
     
     IDX = kmeans(A, Kmns);
     U_grp_size = zeros(K, 1);
+    
     for c = 1:Kmns
 %         c
         clus = find(IDX==c);
@@ -25,5 +26,12 @@ function [U_grp_cell, U_grp_size] = uniform_kmeans(A, Kmns, K)
             
         end
         
-    end    
+        temp3 = A(clus, :);
+        plot(temp3(:,1), temp3(:,2), 'Color', rand(1,3));
+        hold on
+        
+    end 
+    
+    
+    
 end

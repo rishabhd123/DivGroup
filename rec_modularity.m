@@ -17,23 +17,22 @@ function temp = rec_modularity(flag, data_index, data_len)
     degree_vect = sum(D,2);
     degree_mat = degree_vect * degree_vect';
     m = sum(sum(D))/2;
-    lambda
+%     lambda
     Mat = D - degree_mat/(2*m) - lambda*ones(data_len);
     [Evec, Evl] = eig(Mat);
     eig_vec = Evec(:, data_len);    
     
-    if(sum(eig_vec>=0) == 0 || sum(eig_vec<0) == 0)
-        display('Inside')
+    while(sum(eig_vec>=0) == 0 || sum(eig_vec<0) == 0)
+        fprintf('Inside')
         data_len = data_len-1;
         eig_vec = Evec(:, data_len);
     end
     
     a = diag(Evl);
-    a(data_len)
+%     a(data_len)
     
     grp_1 = data_index(find(eig_vec>=0));
     grp_2 = data_index(find(eig_vec< 0));
-    
     
     flag = flag/2;
     
