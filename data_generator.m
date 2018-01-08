@@ -2,11 +2,11 @@
 % d = 5;
 % K = 2^8; %Number of groups
 % conc_crcl = 64;
-N = 2^13;
+N = 2^8;
 d = 2;
-K = 2^9; %Number of groups
+K = 2^3; %Number of groups
 % n = N/K; % size of each group
-conc_crcl = 2^5;
+conc_crcl = 2^2;
 mn = 500;
 mu = ones([1 ,d])*mn;
 R = cell(conc_crcl, 1);

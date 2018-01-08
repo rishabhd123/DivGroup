@@ -7,11 +7,16 @@ function [grp_cell, grp_size] = spectral_modularity(K, lambda, distanceMat)
     Mat = distanceMat - degree_mat/(2*m) - lambda*ones(data_len);
     tic
     fprintf('Eigen Decomposition Initiated\n')
-    [Evec, ~] = eig(Mat);
+    [Evec, Evl] = eig(Mat);
     fprintf('Eigen Decomposition completed\n')
     toc
     
-    D = zeros(data_len, K);
+    [~, I] = sort(diag(Evl), 'descend');
+    Evec = Evec(:, I);   
+    
+%     figure
+%     plot(diag(log2(-Evl)),'*');
+%     D = zeros(data_len, K);
     
     fprintf('Selecting eigen vectors for K-Means\n')
     eig_vect_cnt=1;
@@ -23,11 +28,12 @@ function [grp_cell, grp_size] = spectral_modularity(K, lambda, distanceMat)
             eig_vec = Evec(:, eig_vect_cnt);
         end
         D(:, i) = eig_vec;
+%         Evl(eig_vect_cnt, eig_vect_cnt)
         eig_vect_cnt = eig_vect_cnt+1;
     end
     
     fprintf('Eigen Vectors for KMeans has been selected\n\n')
-    
+
     tic
     fprintf('Performing Kmeans Clustering\n')    
     IDX = kmeans(D, K);

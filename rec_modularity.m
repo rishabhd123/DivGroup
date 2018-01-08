@@ -21,6 +21,9 @@ function temp = rec_modularity(flag, data_index, data_len)
     Mat = D - degree_mat/(2*m) - lambda*ones(data_len);
     [Evec, Evl] = eig(Mat);
     
+    [~, I] = sort(diag(Evl), 'descend');
+    Evec = Evec(:, I);
+    
     eig_vect_cnt=1;
     eig_vec = Evec(:, eig_vect_cnt);    
     

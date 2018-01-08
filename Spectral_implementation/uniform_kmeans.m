@@ -27,7 +27,7 @@ function [U_grp_cell, U_grp_size] = uniform_kmeans(A, Kmns, K)
         end
         
 %         temp3 = A(clus, :);
-%         plot(temp3(:,1), temp3(:,2), 'Color', rand(1,3));
+%         plot(temp3(:,1), temp3(:,2), '*', 'Color', rand(1,3));
 %         hold on
         
     end 
