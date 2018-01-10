@@ -2,9 +2,9 @@
 % d = 5;
 % K = 2^8; %Number of groups
 % conc_crcl = 64;
-N = 2^8;
-d = 2;
-K = 2^3; %Number of groups
+N = 2^6;
+d = 1000;
+K = 2^4; %Number of groups
 % n = N/K; % size of each group
 conc_crcl = 2^2;
 mn = 500;
@@ -41,7 +41,7 @@ input.data = data;
 input.N = N;
 input.d = d;
 
-plot(data(:,1), data(:,2), '.r');
+% plot(data(:,1), data(:,2), '.r');
 
 
 

@@ -7,7 +7,7 @@ fprintf('Modularity\n\n');
 A = input.data;
 N = input.N;
 d = input.d;
-K = 2^3; %Number of Groups
+K = 2^4; %Number of Groups
 
 % A = csvread('../Dataset/jammu_data_preprocessed_1.csv');
 % A = A(1:10240, :);
@@ -74,7 +74,13 @@ toc
 % plot(a(:,1), a(:,2), 'ok');
 % title('Modularity');
 % hold on
-
+% figure
+% for k=1:K
+%     temp3 = A(grp_cell{k}, :);
+%     plot(temp3(:,1), temp3(:,2), '-*', 'Color', rand(1,3));
+%     hold on
+% end
+% title('DivGroup');
 
 %% -------------------------------Uniform Kmeans--------------------------------------------
 
@@ -108,6 +114,15 @@ temp1 = sum(var(mean_vect));
 fprintf('Uniformity Result = %f\n\n', temp1);
 fprintf('Uniform Kmeans ');
 toc
+
+
+% figure
+% for k=1:K
+%     temp3 = A(U_grp_cell{k}, :);
+%     plot(temp3(:,1), temp3(:,2), '-*', 'Color', rand(1,3));
+%     hold on
+% end
+% title('Uniform Kmeans');
 
 
 % figure
